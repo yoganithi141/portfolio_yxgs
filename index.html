@@ -272,31 +272,46 @@ My goal is to become a skilled professional who can contribute meaningfully to t
 
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <form id="contactForm" class="p-4 bg-dark rounded">
+        <!-- Dark styled contact box -->
+        <form id="contactForm" class="p-4 rounded" style="background-color: var(--secondary);">
           <div class="row g-3">
             <div class="col-md-6">
-              <input id="name" name="from_name" type="text" class="form-control border-0" placeholder="Your Name" required>
+              <input id="name" name="from_name" type="text" 
+                     class="form-control border-0 text-light" 
+                     style="background-color: var(--dark);" 
+                     placeholder="Your Name" required>
             </div>
             <div class="col-md-6">
-              <input id="email" name="from_email" type="email" class="form-control border-0" placeholder="Your Email" required>
+              <input id="email" name="from_email" type="email" 
+                     class="form-control border-0 text-light" 
+                     style="background-color: var(--dark);" 
+                     placeholder="Your Email" required>
             </div>
           </div>
 
           <div class="row g-3 mt-3">
             <div class="col-12">
-              <input id="subject" name="subject" type="text" class="form-control border-0" placeholder="Subject" required>
+              <input id="subject" name="subject" type="text" 
+                     class="form-control border-0 text-light" 
+                     style="background-color: var(--dark);" 
+                     placeholder="Subject" required>
             </div>
           </div>
 
           <div class="row g-3 mt-3">
             <div class="col-12">
-              <textarea id="message" name="message" class="form-control border-0" rows="6" placeholder="Write your message..." required></textarea>
+              <textarea id="message" name="message" 
+                        class="form-control border-0 text-light" 
+                        style="background-color: var(--dark);" 
+                        rows="6" placeholder="Write your message..." required></textarea>
             </div>
           </div>
 
           <div class="row g-3 mt-4">
             <div class="col-12 text-center">
-              <button type="submit" class="btn btn-primary px-5 py-2 fw-semi-bold">Send Message</button>
+              <button type="submit" class="btn btn-primary px-5 py-2 fw-semi-bold">
+                Send Message
+              </button>
             </div>
           </div>
 
@@ -318,14 +333,15 @@ My goal is to become a skilled professional who can contribute meaningfully to t
     e.preventDefault();
     const feedback = document.getElementById("formFeedback");
 
+
     emailjs.sendForm("Yxgs_283910", "YOUR_TEMPLATE_ID", this)
       .then(() => {
         feedback.textContent = "✅ Message sent successfully!";
-        feedback.style.color = "#00B87B"; // success green
+        feedback.style.color = "var(--primary)";
         this.reset();
       }, (error) => {
         feedback.textContent = "❌ Failed to send. Please try again.";
-        feedback.style.color = "#FF4D4D"; // error red
+        feedback.style.color = "#FF4D4D";
         console.error("EmailJS Error:", error);
       });
   });
@@ -382,5 +398,6 @@ My goal is to become a skilled professional who can contribute meaningfully to t
         <script src="main.js"></script>
     </body>
 </html>
+
 
 
