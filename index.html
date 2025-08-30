@@ -263,6 +263,7 @@ My goal is to become a skilled professional who can contribute meaningfully to t
 
 
                   <!-- Contact start -->
+<!-- Contact Section -->
 <section id="contact" class="contact-section">
   <h2 class="contact-title">Contact Me</h2>
 
@@ -292,30 +293,11 @@ My goal is to become a skilled professional who can contribute meaningfully to t
   </form>
 </section>
 
-<style>
-  .contact-section{
-    max-width:900px;
-    margin:2rem auto;
-    padding:1.25rem;
-    background:#fff;
-    border-radius:12px;
-    box-shadow:0 6px 20px rgba(0,0,0,0.05);
-  }
-  .contact-title{text-align:center;margin-bottom:1rem;font-size:1.6rem;}
-  .contact-form .row{display:flex;gap:1rem;margin-bottom:0.75rem;}
-  .contact-form .col{flex:1;}
-  input,textarea{width:100%;padding:0.75rem;border:1px solid #ccc;border-radius:8px;}
-  .btn{width:100%;padding:0.8rem;border:0;border-radius:8px;background:#0d6efd;color:#fff;font-weight:600;cursor:pointer;}
-  .btn:active{transform:translateY(1px);}
-  .feedback{text-align:center;margin-top:0.5rem;font-size:0.95rem;}
-  @media(max-width:640px){.contact-form .row{flex-direction:column;}}
-</style>
-
 <!-- EmailJS Library -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
   (function(){
-    // ✅ Your Public Key
+    // ✅ Your EmailJS Public Key
     emailjs.init("KBqrEhCHuCi_hVcGP"); 
   })();
 
@@ -323,8 +305,8 @@ My goal is to become a skilled professional who can contribute meaningfully to t
     e.preventDefault();
     const feedback = document.getElementById("formFeedback");
 
-    // ✅ Service ID & Template ID
-    emailjs.sendForm("Yxgs_283910", "template_xbs7y56", this)
+    // ✅ Your Service ID + Your Template ID
+    emailjs.sendForm("Yxgs_283910", "YOUR_TEMPLATE_ID", this)
       .then(() => {
         feedback.textContent = "✅ Message sent successfully!";
         feedback.style.color = "green";
@@ -388,3 +370,4 @@ My goal is to become a skilled professional who can contribute meaningfully to t
         <script src="main.js"></script>
     </body>
 </html>
+
