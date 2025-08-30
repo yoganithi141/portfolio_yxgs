@@ -262,43 +262,82 @@ My goal is to become a skilled professional who can contribute meaningfully to t
                     <!-- Portfolio End -->
 
 
-                    <!-- Contact Start -->
-                    <section class="py-5 wow fadeInUp" data-wow-delay="0.1s" id="contact">
-                        <h1 class="title pb-3 mb-5">Contact Me</h1>
-						
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control border-0 bg-secondary" id="name" placeholder="Your Name">
-                                        <label for="name">Your Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control border-0 bg-secondary" id="email" placeholder="Your Email">
-                                        <label for="email">Your Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control border-0 bg-secondary" id="subject" placeholder="Subject">
-                                        <label for="subject">Subject</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control border-0 bg-secondary" placeholder="Leave a message here" id="message" style="height: 200px"></textarea>
-                                        <label for="message">Message</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
-                    </section>
-                    <!-- Contact End -->
+                  <!-- Contact start -->
+<section id="contact" class="contact-section">
+  <h2 class="contact-title">Contact Me</h2>
+
+  <form id="contactForm" class="contact-form">
+    <div class="row">
+      <div class="col">
+        <input id="name" name="from_name" type="text" placeholder="Your Name" required>
+      </div>
+      <div class="col">
+        <input id="email" name="from_email" type="email" placeholder="Your Email" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <input id="subject" name="subject" type="text" placeholder="Subject" required>
+    </div>
+
+    <div class="row">
+      <textarea id="message" name="message" placeholder="Write your message..." rows="6" required></textarea>
+    </div>
+
+    <div class="row">
+      <button type="submit" class="btn">Send Message</button>
+    </div>
+
+    <p id="formFeedback" class="feedback"></p>
+  </form>
+</section>
+
+<style>
+  .contact-section{
+    max-width:900px;
+    margin:2rem auto;
+    padding:1.25rem;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.05);
+  }
+  .contact-title{text-align:center;margin-bottom:1rem;font-size:1.6rem;}
+  .contact-form .row{display:flex;gap:1rem;margin-bottom:0.75rem;}
+  .contact-form .col{flex:1;}
+  input,textarea{width:100%;padding:0.75rem;border:1px solid #ccc;border-radius:8px;}
+  .btn{width:100%;padding:0.8rem;border:0;border-radius:8px;background:#0d6efd;color:#fff;font-weight:600;cursor:pointer;}
+  .btn:active{transform:translateY(1px);}
+  .feedback{text-align:center;margin-top:0.5rem;font-size:0.95rem;}
+  @media(max-width:640px){.contact-form .row{flex-direction:column;}}
+</style>
+
+<!-- EmailJS Library -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function(){
+    // ✅ Your Public Key
+    emailjs.init("KBqrEhCHuCi_hVcGP"); 
+  })();
+
+  document.getElementById("contactForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const feedback = document.getElementById("formFeedback");
+
+    // ✅ Service ID & Template ID
+    emailjs.sendForm("Yxgs_283910", "template_xbs7y56", this)
+      .then(() => {
+        feedback.textContent = "✅ Message sent successfully!";
+        feedback.style.color = "green";
+        this.reset();
+      }, (error) => {
+        feedback.textContent = "❌ Failed to send. Try again.";
+        feedback.style.color = "red";
+        console.error("EmailJS Error:", error);
+      });
+  });
+</script>
+                     <!-- contact end -->
+
 
                     <!-- Footer Start -->
                     <section class="wow fadeIn" data-wow-delay="0.1s">
