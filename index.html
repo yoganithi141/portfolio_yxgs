@@ -264,56 +264,68 @@ My goal is to become a skilled professional who can contribute meaningfully to t
 
                   <!-- Contact start -->
 <!-- Contact Section -->
-<section id="contact" class="contact-section">
-  <h2 class="contact-title">Contact Me</h2>
+<section id="contact" class="container-fluid py-5 bg-secondary">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="text-light fw-semi-bold title">Contact Me</h2>
+    </div>
 
-  <form id="contactForm" class="contact-form">
-    <div class="row">
-      <div class="col">
-        <input id="name" name="from_name" type="text" placeholder="Your Name" required>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <form id="contactForm" class="p-4 bg-dark rounded">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <input id="name" name="from_name" type="text" class="form-control border-0" placeholder="Your Name" required>
+            </div>
+            <div class="col-md-6">
+              <input id="email" name="from_email" type="email" class="form-control border-0" placeholder="Your Email" required>
+            </div>
+          </div>
+
+          <div class="row g-3 mt-3">
+            <div class="col-12">
+              <input id="subject" name="subject" type="text" class="form-control border-0" placeholder="Subject" required>
+            </div>
+          </div>
+
+          <div class="row g-3 mt-3">
+            <div class="col-12">
+              <textarea id="message" name="message" class="form-control border-0" rows="6" placeholder="Write your message..." required></textarea>
+            </div>
+          </div>
+
+          <div class="row g-3 mt-4">
+            <div class="col-12 text-center">
+              <button type="submit" class="btn btn-primary px-5 py-2 fw-semi-bold">Send Message</button>
+            </div>
+          </div>
+
+          <p id="formFeedback" class="text-center mt-3 fw-medium"></p>
+        </form>
       </div>
-      <div class="col">
-        <input id="email" name="from_email" type="email" placeholder="Your Email" required>
-      </div>
     </div>
-
-    <div class="row">
-      <input id="subject" name="subject" type="text" placeholder="Subject" required>
-    </div>
-
-    <div class="row">
-      <textarea id="message" name="message" placeholder="Write your message..." rows="6" required></textarea>
-    </div>
-
-    <div class="row">
-      <button type="submit" class="btn">Send Message</button>
-    </div>
-
-    <p id="formFeedback" class="feedback"></p>
-  </form>
+  </div>
 </section>
 
 <!-- EmailJS Library -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
   (function(){
-    // ✅ Your EmailJS Public Key
-    emailjs.init("KBqrEhCHuCi_hVcGP"); 
+    emailjs.init("KBqrEhCHuCi_hVcGP");
   })();
 
   document.getElementById("contactForm").addEventListener("submit", function(e){
     e.preventDefault();
     const feedback = document.getElementById("formFeedback");
 
-    // ✅ Your Service ID + Your Template ID
     emailjs.sendForm("Yxgs_283910", "YOUR_TEMPLATE_ID", this)
       .then(() => {
         feedback.textContent = "✅ Message sent successfully!";
-        feedback.style.color = "green";
+        feedback.style.color = "#00B87B"; // success green
         this.reset();
       }, (error) => {
-        feedback.textContent = "❌ Failed to send. Try again.";
-        feedback.style.color = "red";
+        feedback.textContent = "❌ Failed to send. Please try again.";
+        feedback.style.color = "#FF4D4D"; // error red
         console.error("EmailJS Error:", error);
       });
   });
@@ -370,4 +382,5 @@ My goal is to become a skilled professional who can contribute meaningfully to t
         <script src="main.js"></script>
     </body>
 </html>
+
 
